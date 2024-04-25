@@ -4,11 +4,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: white
+  background-image: white;
 }
 
 @layer utilities {
   .text-balance {
-    text-wrap: balance;
+    text-wrap: balance; 
   }
 }
