@@ -1,27 +1,29 @@
 "use client"
 
 import Task from "@/components/task";
-import Image from "next/image";
 import { useState } from "react";
 
-export default function Tasks() {
+export default function TaskList() {
   const [newTaskText, setNewTaskText] = useState('')
   const [lastId, setLastID] = useState(2)
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      title: 'Tarea 1'
+      title: 'Tarea 1',
+      isDone: false
     },
     {
       id: 2,
-      title: 'Tarea 2'
+      title: 'Tarea 2',
+      isDone: true
     }])
 
   const addTask = () => {
     if (newTaskText !== '') {
       setTasks([...tasks, {
         id: lastId + 1,
-        title: newTaskText
+        title: newTaskText,
+        isDone: false
       }])
     }
     setNewTaskText('')
