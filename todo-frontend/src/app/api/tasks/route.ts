@@ -31,3 +31,23 @@ export async function POST(req: Request) {
     return new NextResponse("Internal Server Error", { status: 500 }); // Handle errors
   }
 }
+
+export async function GET() {
+  try {
+
+    //fetch tasks from the db
+    const tasks = await db.tasks.findMany({
+      where: {
+        user_id: "662f3917f4ff9df9d3424931",
+      },
+    });
+
+    // respond with the todos
+    return NextResponse.json(tasks, { status: 200 }); 
+  } catch (error) {
+    console.log("[GET TASKS]", error);
+
+// Handle errors
+    return new NextResponse("Internal Server Error", { status: 500 }); 
+  }
+}

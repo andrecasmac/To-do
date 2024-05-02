@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export default function Task({taskInfo, deleteTask}) {
 
-    const [isDone, setIsDone] = useState(taskInfo.isDone);
+    const [isDone, setIsDone] = useState(taskInfo.status === "Complete");
 
     const handleDelete = () => deleteTask(taskInfo.id);
     const handleCheckbox = () => setIsDone(!isDone);
