@@ -18,17 +18,51 @@ export default function TaskList() {
       isDone: true
     }])
 
-  const addTask = () => {
-    if (newTaskText !== '') {
-      setTasks([...tasks, {
-        id: lastId + 1,
-        title: newTaskText,
-        isDone: false
-      }])
+  // const addTask = () => {
+  //   if (newTaskText !== '') {
+  //     setTasks([...tasks, {
+  //       id: lastId + 1,
+  //       title: newTaskText,
+  //       isDone: false
+  //     }])
+  //   }
+  //   setNewTaskText('')
+  //   setLastID(lastId + 1)
+  // }
+
+  const addTask = async (e) => {
+    e.preventDefault();
+    if (newTaskText === '') {
+      alert("Title required");
+      return;
     }
-    setNewTaskText('')
-    setLastID(lastId + 1)
+
+    try {
+      const apiUrl = "api/tasks";
+
+      const requestData = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title: newTaskText, user_id: '662f3917f4ff9df9d3424931' }),
+      };
+
+      const response = await fetch(apiUrl, requestData);
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to post task: ${response.status} - ${response.statusText}`
+        );
+      }
+
+      setNewTaskText('')
+      setLastID(lastId + 1)
+    } catch (error) {
+      console.log(error);
+    }
   }
+
 
   const deleteTask = (id) => {
     const updatedList = tasks.filter((task) => task.id !== id);
