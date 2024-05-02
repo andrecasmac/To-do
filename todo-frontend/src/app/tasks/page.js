@@ -62,7 +62,6 @@ export default function TaskList() {
         setTasks(data);
       } catch (error) {
         console.error(`Error fetching items: ${error.message}`);
-        toast.error("unable to fetch todos at this time");
       }
     };
     // call fetch fetchTasks
