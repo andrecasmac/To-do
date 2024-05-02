@@ -75,7 +75,7 @@ export default function TaskList() {
     <ul className="text-sm font-medium border rounded-lg bg-gray-700 border-gray-600 text-white">
 
       {tasks.map((task) => (
-        <Task taskInfo={task} deleteTask={deleteTask} />
+        <Task key={task.id} taskInfo={task} deleteTask={deleteTask} />
       ))}
 
       <li key="Add" className="w-full rounded-t-lg">
