@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 export default function TaskList() {
   const [newTaskText, setNewTaskText] = useState('')
-  const [lastId, setLastID] = useState(2)
   const [tasks, setTasks] = useState([])
 
   const addTask = async (e) => {
@@ -35,7 +34,6 @@ export default function TaskList() {
       }
 
       setNewTaskText('')
-      setLastID(lastId + 1)
     } catch (error) {
       console.log(error);
     }
