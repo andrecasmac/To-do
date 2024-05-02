@@ -13,7 +13,7 @@ export default function Task({taskInfo, deleteTask}) {
             <input 
               checked={isDone}
               onChange={handleCheckbox}
-              id="angular-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-blue-600 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
+              id="angular-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600rounded focus:ring-blue-500 focus:ring-blue-600 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
             />
             <label 
               style={{ textDecoration: isDone ? "line-through" : "none" }}
