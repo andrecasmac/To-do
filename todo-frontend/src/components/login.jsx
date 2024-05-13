@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { useRouter  } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
@@ -10,6 +10,8 @@ export default function Login() {
     const handleInputChange = (event, field) => {
       setFormData(form => ({ ...form, [field]: event.target.value }))
     }
+
+    const router = useRouter() 
     
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -31,10 +33,10 @@ export default function Login() {
               `Failed to post task: ${response.status} - ${response.statusText}`
             );
           } else {
-            const responseJSON = await response.json()
-            localStorage.setItem(userId, responseJSON.id)
-            localStorage.setItem(userName, responseJSON.name)
-            redirect("/tasks", 'push')
+            const responseJSON = await response.json();
+            localStorage.setItem('userId', responseJSON.id);
+            localStorage.setItem('userName', responseJSON.name);
+            router.push("/tasks");
           }
         } catch (err) {
             console.log("Error", err);

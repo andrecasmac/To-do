@@ -1,6 +1,6 @@
 import { db } from "../../../lib/db";
 
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(req: Request) {
   try {
@@ -32,13 +32,15 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
+
+    const id = req.nextUrl.searchParams.get("id")
 
     //fetch tasks from the db
     const tasks = await db.tasks.findMany({
       where: {
-        user_id: "662f3917f4ff9df9d3424931",
+        user_id: id,
       },
     });
 

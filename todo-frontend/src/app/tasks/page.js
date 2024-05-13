@@ -16,13 +16,14 @@ export default function TaskList() {
 
     try {
       const apiUrl = "api/tasks";
+      const id = localStorage.getItem('userId')
 
       const requestData = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: newTaskText, user_id: '662f3917f4ff9df9d3424931' }),
+        body: JSON.stringify({ title: newTaskText, user_id: id }),
       };
 
       const response = await fetch(apiUrl, requestData);
@@ -48,7 +49,8 @@ export default function TaskList() {
     //fetch tasks
     const fetchTasks = async () => {
       try { 
-         const response = await fetch(`/api/tasks`, {
+         const id = localStorage.getItem('userId')
+         const response = await fetch(`/api/tasks/?id=${id}`, {
           next: { revalidate: 3600 },
         });
 
