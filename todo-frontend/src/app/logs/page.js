@@ -39,7 +39,7 @@ export default function TaskList() {
         </tr>
 
       {logs.map((log) => (
-        <tr>
+        <tr key={log.id}>
           <td>{log.description}</td>
           <td>{log.date}</td>
         </tr>
